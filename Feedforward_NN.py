@@ -39,6 +39,7 @@ train= tf.train.GradientDescentOptimizer(Learning_Rate).minimize(cost)
 sess = tf.Session()
 init=tf.global_variables_initializer()
 sess.run(init)
-for i in range(10):
-    sess.run(train, feed_dict=tensor_map)
+for i in range(100):
+    _, loss = sess.run([train, cost], feed_dict=tensor_map)
     print ("Step: ", i)
+    print ("loss: ", loss)
