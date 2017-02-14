@@ -33,7 +33,7 @@ y=tf.sigmoid(y)
 
 
 # Training
-cost= tf.reduce_sum(-y_*tf.log(y)-(1-y_)*tf.log(1-y))
+cost= tf.reduce_mean(-y_*tf.log(y)-(1-y_)*tf.log(1-y))
 sess = tf.Session()
 init=tf.initialize_all_variables()
 sess.run(init)
