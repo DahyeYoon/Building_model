@@ -7,6 +7,7 @@ INPUT_SIZE=7
 HIDDEN1_SIZE=10
 HIDDEN2_SIZE=8
 CLASSES=5
+Learning_Rate=0.05
 
 # shape must be matched to data dimension
 x=tf.placeholder(tf.float32, shape=[None, INPUT_SIZE]) #shape=[batchSize, dimension]
@@ -34,7 +35,10 @@ y=tf.sigmoid(y)
 
 # Training
 cost= tf.reduce_mean(-y_*tf.log(y)-(1-y_)*tf.log(1-y))
+train= tf.train.GradientDescentOptimizer(Learning_Rate).minimize(cost)
 sess = tf.Session()
-init=tf.initialize_all_variables()
+init=tf.global_variables_initializer()
 sess.run(init)
-print (sess.run(cost, feed_dict=tensor_map))
+for i in range(10):
+    sess.run(train, feed_dict=tensor_map)
+    print ("Step: ", i)
