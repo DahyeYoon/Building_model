@@ -43,4 +43,5 @@ for i in range(100):
     _, loss = sess.run([train, cost], feed_dict=tensor_map)
     print ("Step: ", i)
     print ("loss: ", loss)
+
 sess.close()
